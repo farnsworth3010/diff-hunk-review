@@ -4,6 +4,16 @@
 
 A Chrome extension for code review on GitHub and Bitbucket Cloud: hide each block of changes once you have reviewed it, like `stage hunk` in your editor. In a large pull request you only see what is still left to review.
 
+<img src="assets/screenshot-hunks.png" width="660" alt="A Bitbucket pull request: Dockerfile shows 1/1 hunks and its Viewed box ticked, README.md shows 1/11 hunks with one hunk collapsed into a Reviewed −1 +2 · show line">
+
+| Select lines to mark only them | The selected lines collapse |
+| --- | --- |
+| <img src="assets/screenshot-lines.png" alt="Five selected removed lines with a Mark 5 lines reviewed button next to the selection"> | <img src="assets/screenshot-lines-reviewed.png" alt="The same five lines collapsed into a Reviewed −5 · show line inside the hunk"> |
+
+<img src="assets/screenshot-popup.png" width="300" alt="The popup: on/off switch, button position, automatic Viewed, reviewed counts for today, 7 days, 30 days and all time, and a 30-day bar chart">
+
+The screenshots are taken on Bitbucket Cloud; on GitHub the extension looks the same.
+
 ## Why use it
 
 - **Review big PRs in pieces.** GitHub's **Viewed** works only for whole files. This extension lets you check off a 600-line file one hunk at a time and come back to it later.

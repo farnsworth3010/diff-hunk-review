@@ -4,6 +4,16 @@
 
 Chrome-расширение для code review в GitHub и Bitbucket Cloud: просмотренный блок изменений скрывается одним кликом, как `stage hunk` в редакторе. В большом pull request'е видно только то, что ещё осталось посмотреть.
 
+<img src="assets/screenshot-hunks.png" width="660" alt="Pull request в Bitbucket: у Dockerfile 1/1 hunks и отмечен Viewed, у README.md 1/11 hunks, один hunk свёрнут в строку Reviewed −1 +2 · show">
+
+| Выделите строки, чтобы отметить только их | Выделенные строки сворачиваются |
+| --- | --- |
+| <img src="assets/screenshot-lines.png" alt="Пять выделенных удалённых строк и кнопка Mark 5 lines reviewed рядом с выделением"> | <img src="assets/screenshot-lines-reviewed.png" alt="Те же пять строк свёрнуты в строку Reviewed −5 · show внутри hunk"> |
+
+<img src="assets/screenshot-popup.png" width="300" alt="Popup: переключатель, положение кнопки, автоматический Viewed, счётчики за сегодня, 7 дней, 30 дней и всё время, график за 30 дней">
+
+Скриншоты сняты в Bitbucket Cloud, в GitHub расширение выглядит так же.
+
 ## Зачем
 
 - **Большой PR по частям.** Галочка **Viewed** в GitHub работает только для файла целиком. Здесь файл на 600 строк можно отмечать по одному hunk'у и вернуться к нему позже.
