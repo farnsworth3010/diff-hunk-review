@@ -1,0 +1,289 @@
+:root {
+  --bg: #ffffff;
+  --bg-muted: #f6f8fa;
+  --border: #d1d9e0;
+  --fg: #1f2328;
+  --fg-muted: #59636e;
+  --accent: #1f883d;
+  --accent-fg: #ffffff;
+  --bar: #1f883d;
+  --bar-hover: #116329;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --bg-muted: #151b23;
+    --border: #3d444d;
+    --fg: #f0f6fc;
+    --fg-muted: #9198a1;
+    --accent: #238636;
+    --bar: #2ea043;
+    --bar-hover: #56d364;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 300px;
+  margin: 0;
+  padding: 14px 16px 16px;
+  background: var(--bg);
+  color: var(--fg);
+  font:
+    13px / 1.4 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+h1 {
+  flex: 1;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+h2 {
+  margin: 0 0 8px;
+  color: var(--fg-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+section + section {
+  margin-top: 16px;
+}
+
+body[data-disabled] .setting {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.switch {
+  position: relative;
+  cursor: pointer;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+.track {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--border);
+  transition: background 0.15s;
+}
+
+/* Positioned rather than margined: a child's top margin would collapse through the track. */
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.15s;
+}
+
+.switch input:checked + .track {
+  background: var(--accent);
+}
+
+.switch input:checked + .track .thumb {
+  transform: translateX(16px);
+}
+
+.segmented {
+  display: flex;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-muted);
+}
+
+.segmented label {
+  flex: 1;
+  cursor: pointer;
+}
+
+.segmented input {
+  position: absolute;
+  opacity: 0;
+}
+
+.segmented span {
+  display: block;
+  padding: 4px 0;
+  border-radius: 4px;
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+.segmented.small span {
+  padding: 1px 8px;
+  font-size: 11px;
+}
+
+.segmented input:checked + span {
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--border);
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.switch input:focus-visible + .track,
+.segmented input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+.stats div {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-muted);
+}
+
+.stats dt {
+  color: var(--fg-muted);
+  font-size: 12px;
+}
+
+.stats dd {
+  margin: 2px 0 0;
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats small {
+  color: var(--fg-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.lines {
+  color: var(--fg-muted);
+  font-size: 11px;
+}
+
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.chart-head h2 {
+  margin: 0;
+}
+
+.chart {
+  position: relative;
+}
+
+#chart {
+  display: block;
+  width: 100%;
+  height: 72px;
+  overflow: visible;
+}
+
+#chart .baseline {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+/* The column-wide hit rect underneath takes the hover. */
+#chart .bar {
+  fill: var(--bar);
+  pointer-events: none;
+}
+
+#chart .hit:hover + .bar,
+#chart .bar.active {
+  fill: var(--bar-hover);
+}
+
+#chart .hit {
+  fill: transparent;
+  cursor: default;
+}
+
+#chart .empty {
+  fill: var(--fg-muted);
+  font-size: 11px;
+}
+
+.axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+  color: var(--fg-muted);
+  font-size: 11px;
+}
+
+#readout {
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+#readout.active {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.option-title {
+  display: block;
+  font-weight: 600;
+}
+
+.option-hint {
+  display: block;
+  color: var(--fg-muted);
+  font-size: 12px;
+}

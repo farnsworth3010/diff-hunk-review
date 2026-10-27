@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Diff Hunk Review</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="icons/icon-32.png" width="24" height="24" alt="" />
+      <h1>Hunk Review</h1>
+      <label class="switch" title="Turn the extension on or off">
+        <input type="checkbox" id="enabled" />
+        <span class="track"><span class="thumb"></span></span>
+        <span class="visually-hidden">Enabled</span>
+      </label>
+    </header>
+
+    <section class="setting">
+      <h2 id="position-label">Button position</h2>
+      <div class="segmented" role="radiogroup" aria-labelledby="position-label">
+        <label><input type="radio" name="position" value="left" /><span>Left</span></label>
+        <label><input type="radio" name="position" value="right" /><span>Right</span></label>
+      </div>
+    </section>
+
+    <section class="setting">
+      <label class="option">
+        <span>
+          <span class="option-title">Tick Viewed automatically</span>
+          <span class="option-hint">When every hunk of a file is reviewed</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="auto-viewed" />
+          <span class="track"><span class="thumb"></span></span>
+        </span>
+      </label>
+    </section>
+
+    <section>
+      <h2>Reviewed</h2>
+      <dl class="stats">
+        <div><dt>Today</dt><dd><span data-stat="today">0</span> <small>hunks</small></dd><span class="lines" data-lines="today">0 lines · 0 files</span></div>
+        <div><dt>7 days</dt><dd><span data-stat="week">0</span> <small>hunks</small></dd><span class="lines" data-lines="week">0 lines · 0 files</span></div>
+        <div><dt>30 days</dt><dd><span data-stat="month">0</span> <small>hunks</small></dd><span class="lines" data-lines="month">0 lines · 0 files</span></div>
+        <div><dt>All time</dt><dd><span data-stat="all">0</span> <small>hunks</small></dd><span class="lines" data-lines="all">0 lines · 0 files</span></div>
+      </dl>
+    </section>
+
+    <section>
+      <div class="chart-head">
+        <h2>Last 30 days</h2>
+        <div class="segmented small" role="radiogroup" aria-label="Chart metric">
+          <label><input type="radio" name="metric" value="hunks" checked /><span>Hunks</span></label>
+          <label><input type="radio" name="metric" value="lines" /><span>Lines</span></label>
+          <label><input type="radio" name="metric" value="files" /><span>Files</span></label>
+        </div>
+      </div>
+      <div class="chart">
+        <svg id="chart" role="img" aria-label="Reviewed per day over the last 30 days"></svg>
+      </div>
+      <div class="axis"><span id="axis-start"></span><span id="readout" aria-live="polite"></span><span>Today</span></div>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

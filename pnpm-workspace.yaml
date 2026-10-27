@@ -1,0 +1,21 @@
+# Supply-chain hardening, see https://pnpm.io/supply-chain-security
+registry: https://registry.npmjs.org/
+
+# Only install versions published at least 7 days ago; most malicious releases are pulled sooner.
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+
+# Fail if a release has weaker publish trust (provenance / trusted publisher) than earlier ones.
+trustPolicy: no-downgrade
+
+# Transitive deps must come from the registry, not git URLs or tarballs.
+blockExoticSubdeps: true
+
+# Dependency install scripts are blocked unless listed here.
+strictDepBuilds: true
+allowBuilds:
+  # Its postinstall only installs git hooks; the root `prepare` script does that instead.
+  simple-git-hooks: false
+
+pmOnFail: error

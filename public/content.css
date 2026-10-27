@@ -1,0 +1,144 @@
+[data-ghr-hidden] {
+  /* biome-ignore lint/complexity/noImportantStyles: must win over GitHub's own row display rules */
+  display: none !important;
+}
+
+/* A hidden hunk keeps its first row as a one-line placeholder with the toggle. */
+tr[data-ghr-collapsed] > td {
+  /* biome-ignore lint/complexity/noImportantStyles: GitHub sets the cell background inline */
+  background: var(--bgColor-muted, var(--ds-background-neutral, #f6f8fa)) !important;
+  color: transparent;
+}
+
+tr[data-ghr-collapsed] > td > code {
+  visibility: hidden;
+}
+
+/* Bitbucket Cloud: the same placeholder for its div-based rows. */
+.lines-wrapper[data-ghr-collapsed] .line-wrapper,
+.lines-wrapper[data-ghr-collapsed] .line-numbers {
+  /* biome-ignore lint/complexity/noImportantStyles: Bitbucket colours added and removed lines with its own classes */
+  background: var(--ds-background-neutral, #f1f2f4) !important;
+  color: transparent;
+}
+
+.lines-wrapper[data-ghr-collapsed] .line-numbers a {
+  color: transparent;
+}
+
+.lines-wrapper[data-ghr-collapsed] .code-component {
+  visibility: hidden;
+}
+
+.ghr-toggle {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 24px;
+  min-width: 30px;
+  padding: 0 9px;
+  transform: translateY(-50%);
+  border: 1px solid var(--borderColor-default, var(--ds-border, #d1d9e0));
+  border-radius: 12px;
+  background: var(--bgColor-default, var(--ds-surface, #ffffff));
+  box-shadow: var(--shadow-resting-small, 0 1px 1px rgba(31, 35, 40, 0.15));
+  color: var(--fgColor-muted, var(--ds-text-subtle, #59636e));
+  font:
+    600 12px / 1 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.ghr-toggle[data-ghr-position="right"] {
+  right: 8px;
+  left: auto;
+}
+
+.ghr-label {
+  display: none;
+}
+
+/* Floating copy for long hunks whose first row scrolled under the file header. */
+.ghr-toggle.ghr-sticky {
+  position: fixed;
+  z-index: 30;
+  transform: none;
+  opacity: 1;
+}
+
+.ghr-toggle.ghr-sticky[hidden],
+.ghr-toggle.ghr-select[hidden] {
+  display: none;
+}
+
+/* Next to a text selection in the diff; always shows its label. */
+.ghr-toggle.ghr-select {
+  position: fixed;
+  z-index: 30;
+  transform: none;
+  opacity: 1;
+  border-color: var(--borderColor-success-emphasis, var(--ds-border-success, #1a7f37));
+  color: var(--fgColor-success, var(--ds-text-success, #1a7f37));
+}
+
+.ghr-toggle.ghr-select .ghr-label {
+  display: inline;
+}
+
+td:has(> .ghr-toggle) {
+  position: relative;
+}
+
+/* Hidden while its row is under a sticky header, which the button would otherwise cover. */
+.ghr-toggle[data-ghr-covered] {
+  visibility: hidden;
+}
+
+/* Collapsed to an icon so it doesn't cover line numbers; the label shows on hover. */
+tr:hover .ghr-toggle,
+.ghr-toggle:focus-visible,
+.ghr-toggle[aria-pressed="true"] {
+  opacity: 1;
+}
+
+.ghr-toggle:hover .ghr-label,
+.ghr-toggle:focus-visible .ghr-label,
+.ghr-toggle[aria-pressed="true"] .ghr-label {
+  display: inline;
+}
+
+.ghr-toggle:hover {
+  border-color: var(--borderColor-success-emphasis, var(--ds-border-success, #1a7f37));
+  color: var(--fgColor-success, var(--ds-text-success, #1a7f37));
+}
+
+.ghr-toggle[aria-pressed="true"] {
+  border-color: var(--borderColor-success-muted, var(--ds-border-success, #4ac26b66));
+  color: var(--fgColor-success, var(--ds-text-success, #1a7f37));
+}
+
+.ghr-progress {
+  flex-shrink: 0;
+  margin-left: 8px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--bgColor-muted, var(--ds-background-neutral, #f6f8fa));
+  color: var(--fgColor-muted, var(--ds-text-subtle, #59636e));
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.ghr-progress[data-ghr-done] {
+  background: var(--bgColor-success-muted, var(--ds-background-success, #dafbe1));
+  color: var(--fgColor-success, var(--ds-text-success, #1a7f37));
+}

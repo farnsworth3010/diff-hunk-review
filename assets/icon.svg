@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Diff Hunk Review</title>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#1f2328"/>
+  <rect x="22" y="24" width="84" height="22" rx="7" fill="#f85149"/>
+  <rect x="22" y="53" width="84" height="22" rx="7" fill="#3fb950"/>
+  <rect x="22" y="82" width="84" height="22" rx="7" fill="#3d444d"/>
+</svg>
